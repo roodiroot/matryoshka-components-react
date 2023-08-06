@@ -2,14 +2,31 @@ import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import ErrorPage from './components/error-page';
+import Root from './root';
+import Services from './pages/services';
+import Lauout from './layout';
+import Blog from './pages/blog';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <Lauout />,
     errorElement: <ErrorPage />,
+    children: [
+      {
+        path: '/',
+        element: <Root />,
+      },
+      {
+        path: '/services',
+        element: <Services />,
+      },
+      {
+        path: '/blogs',
+        element: <Blog />,
+      },
+    ],
   },
 ]);
 
